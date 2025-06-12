@@ -1,187 +1,122 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>QuickHaulXpress Dispatch Services</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    body {
-      font-family: "Segoe UI", sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      background-color: #fff;
-      color: #333;
-    }
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    header {
-      background-color: #111;
-      color: #fff;
-      padding: 40px 20px;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 2.5em;
-    }
-    header p {
-      font-size: 1.2em;
-    }
-    .btn-primary {
-      display: inline-block;
-      background-color: #27ae60;
-      color: white;
-      padding: 12px 24px;
-      margin-top: 20px;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-    .hero-img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      margin-bottom: 30px;
-    }
-    section {
-      margin-bottom: 40px;
-    }
-    h2 {
-      color: #111;
-      font-size: 1.8em;
-      margin-bottom: 10px;
-    }
-    .social-icons a {
-      margin: 0 10px;
-      color: #27ae60;
-      font-size: 1.5em;
-    }
-    footer {
-      background-color: #111;
-      color: white;
-      text-align: center;
-      padding: 20px 10px;
-    }
-    form {
-      display: grid;
-      gap: 15px;
-      margin-top: 20px;
-    }
-    form input, form select, form textarea, form button {
-      padding: 12px;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-family: inherit;
-    }
-    form button {
-      background-color: #27ae60;
-      color: white;
-      cursor: pointer;
-      border: none;
-    }
-    #whatsapp-btn {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background-color: #25d366;
-      color: white;
-      font-size: 28px;
-      padding: 14px;
-      border-radius: 50%;
-      text-align: center;
-      z-index: 100;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="container">
-      <img src="logo.png" alt="QuickHaulXpress Logo" style="width: 180px;" />
-      <h1>🚛 Owner-Operators, We’ve Got You</h1>
-      <p>Keep Rolling — We Handle the Rest. Dispatch Services Nationwide for Hot Shot, Flatbed, Box Trucks, Reefers & Power Only</p>
-      <a href="tel:+16147146637" class="btn-primary">📞 Call or DM (614) 714-6637</a>
-    </div>
-  </header>
+import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
-  <div class="container">
-    <img class="hero-img" src="https://images.unsplash.com/photo-1591768793355-74d04bb6608f?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Truck on highway" />
+export default function LandingPage() {
+  const truckRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: truckRef });
+  const truckX = useTransform(scrollYProgress, [0, 1], ["-50%", "120%"]);
+  const [submitted, setSubmitted] = useState(false);
 
-    <section>
-      <h2>Why QuickHaulXpress?</h2>
-      <ul>
-        <li>✅ Personalized Load Booking</li>
-        <li>✅ Route Optimization</li>
-        <li>✅ Rate Negotiation</li>
-        <li>✅ Broker Credit Checks</li>
-        <li>✅ Paperwork & Invoicing</li>
-        <li>✅ Detention/Tonu Assistance</li>
-      </ul>
-    </section>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    await fetch("https://formspree.io/f/xanjolal", {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    });
+    setSubmitted(true);
+  };
 
-    <section id="about">
-      <h2>About Us</h2>
-      <p>We're a team of passionate dispatchers with years of experience in logistics. Whether you're a one-truck business or a growing fleet, we’ve got the loads and support you need to stay moving and profitable.</p>
-    </section>
+  return (
+    <div className="bg-gray-100 min-h-screen font-sans">
+      {/* Hero */}
+      <section className="text-center py-20 px-6 bg-white">
+        <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fadeIn">
+          Fast & Reliable Dispatching for Owner Operators
+        </h1>
+        <p className="text-lg md:text-xl mb-6 max-w-2xl mx-auto animate-fadeIn delay-500">
+          Get dedicated lanes, top-paying loads, and 24/7 support with QuickHaulXpress.
+        </p>
+        <a
+          href="#contact"
+          className="bg-blue-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-blue-700 transition-all"
+        >
+          Connect with a Dispatcher
+        </a>
+      </section>
 
-    <section id="testimonials">
-      <h2>What Our Drivers Say</h2>
-      <blockquote>“Since joining QuickHaulXpress, I’ve doubled my weekly revenue. No more sitting!”</blockquote>
-      <p>- Marcus J., Owner Operator</p>
-    </section>
-
-    <section id="contact">
-      <h2>Get Started</h2>
-      <p>Fill out this form and our team will reach out to onboard you:</p>
-
-      <form action="https://formspree.io/f/xanjolal" method="POST" enctype="multipart/form-data">
-        <label for="mc">MC Number</label>
-        <input type="text" id="mc" name="MC Number" placeholder="Enter your MC Number" required />
-
-        <label for="truck">Truck Type</label>
-        <input type="text" id="truck" name="Truck Type" placeholder="e.g., Box Truck, Reefer, Power Only" required />
-
-        <label for="zip">ZIP Code</label>
-        <input type="text" id="zip" name="ZIP Code" placeholder="Enter your ZIP code" required />
-
-        <label for="lanes">Preferred Lanes</label>
-        <select id="lanes" name="Preferred Lanes" required>
-          <option value="" disabled selected>Select lanes</option>
-          <option value="OTR">OTR (Over the Road)</option>
-          <option value="Regional">Regional</option>
-          <option value="Local">Local</option>
-        </select>
-
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email" required />
-
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="Phone Number" placeholder="Enter your phone number" required />
-
-        <label for="documents">Upload Documents (Optional)</label>
-        <input type="file" id="documents" name="Documents" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" />
-
-        <button type="submit">Get My Loads & Start</button>
-      </form>
-
-      <div class="social-icons">
-        <a href="https://www.instagram.com/quickhaulxpress/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="mailto:lucas.otrdispatch@gmail.com"><i class="fas fa-envelope"></i></a>
-        <a href="tel:+16147146637"><i class="fas fa-phone"></i></a>
+      {/* Truck Animation */}
+      <div ref={truckRef} className="relative h-64 overflow-hidden bg-gradient-to-r from-white to-blue-100">
+        <motion.img
+          src="https://cdn-icons-png.flaticon.com/512/1995/1995574.png"
+          alt="Truck"
+          style={{ x: truckX }}
+          className="w-40 md:w-64 absolute bottom-0 left-0"
+        />
       </div>
-    </section>
-  </div>
 
-  <footer>
-    &copy; 2025 QuickHaulXpress Dispatch Services. Call us anytime: (614) 714-6637
-  </footer>
+      {/* Contact Form */}
+      <section id="contact" className="py-16 px-6 bg-white">
+        <div className="max-w-2xl mx-auto">
+          {!submitted ? (
+            <form onSubmit={handleSubmit} className="space-y-6 bg-gray-50 p-8 rounded-xl shadow-xl">
+              <h2 className="text-3xl font-bold text-center mb-4">Book a Dispatcher Now</h2>
+              <input
+                name="name"
+                type="text"
+                placeholder="Your Name"
+                required
+                className="w-full p-3 border rounded"
+              />
+              <input
+                name="email"
+                type="email"
+                placeholder="Email Address"
+                required
+                className="w-full p-3 border rounded"
+              />
+              <input
+                name="phone"
+                type="tel"
+                placeholder="Phone Number"
+                required
+                className="w-full p-3 border rounded"
+              />
+              <input
+                name="lanes"
+                type="text"
+                placeholder="Preferred Lanes (e.g. TX to NY)"
+                required
+                className="w-full p-3 border rounded"
+              />
+              <select name="truck_type" required className="w-full p-3 border rounded">
+                <option value="">Select Truck Type</option>
+                <option value="Dry Van">Dry Van</option>
+                <option value="Reefer">Reefer</option>
+                <option value="Flatbed">Flatbed</option>
+                <option value="Hotshot">Hotshot</option>
+              </select>
+              <input
+                name="length"
+                type="text"
+                placeholder="Truck Length (ft)"
+                required
+                className="w-full p-3 border rounded"
+              />
+              <button
+                type="submit"
+                className="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700 transition-all"
+              >
+                Submit to Connect with a Dispatcher Instantly
+              </button>
+            </form>
+          ) : (
+            <div className="text-center">
+              <h3 className="text-2xl font-bold mb-4">Thank you!</h3>
+              <p className="text-lg mb-2">Your dispatcher is reaching out with load options in under 5 minutes.</p>
+              <div className="mx-auto w-16 h-16 animate-spin rounded-full border-t-4 border-blue-600 border-solid"></div>
+            </div>
+          )}
+        </div>
+      </section>
 
-  <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/16147146637" target="_blank" id="whatsapp-btn" aria-label="Chat on WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-</body>
-</html>
+      {/* Footer */}
+      <footer className="text-center text-sm text-gray-500 py-6">
+        © {new Date().getFullYear()} QuickHaulXpress. All rights reserved.
+      </footer>
+    </div>
+  );
+}
