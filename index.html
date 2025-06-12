@@ -1,122 +1,190 @@
-import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+<!DOCTYPE html>
+<html lang="en">
 
-export default function LandingPage() {
-  const truckRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: truckRef });
-  const truckX = useTransform(scrollYProgress, [0, 1], ["-50%", "120%"]);
-  const [submitted, setSubmitted] = useState(false);
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuickHaulXpress Dispatch</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    await fetch("https://formspree.io/f/xanjolal", {
-      method: "POST",
-      body: formData,
-      headers: {
-        Accept: "application/json",
-      },
-    });
-    setSubmitted(true);
-  };
+    body {
+      background: #0b0c10;
+      color: #ffffff;
+      line-height: 1.6;
+    }
 
-  return (
-    <div className="bg-gray-100 min-h-screen font-sans">
-      {/* Hero */}
-      <section className="text-center py-20 px-6 bg-white">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fadeIn">
-          Fast & Reliable Dispatching for Owner Operators
-        </h1>
-        <p className="text-lg md:text-xl mb-6 max-w-2xl mx-auto animate-fadeIn delay-500">
-          Get dedicated lanes, top-paying loads, and 24/7 support with QuickHaulXpress.
-        </p>
-        <a
-          href="#contact"
-          className="bg-blue-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-blue-700 transition-all"
-        >
-          Connect with a Dispatcher
-        </a>
-      </section>
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-      {/* Truck Animation */}
-      <div ref={truckRef} className="relative h-64 overflow-hidden bg-gradient-to-r from-white to-blue-100">
-        <motion.img
-          src="https://cdn-icons-png.flaticon.com/512/1995/1995574.png"
-          alt="Truck"
-          style={{ x: truckX }}
-          className="w-40 md:w-64 absolute bottom-0 left-0"
-        />
-      </div>
+    header {
+      background: #1f2833;
+      text-align: center;
+      padding: 50px 20px;
+    }
 
-      {/* Contact Form */}
-      <section id="contact" className="py-16 px-6 bg-white">
-        <div className="max-w-2xl mx-auto">
-          {!submitted ? (
-            <form onSubmit={handleSubmit} className="space-y-6 bg-gray-50 p-8 rounded-xl shadow-xl">
-              <h2 className="text-3xl font-bold text-center mb-4">Book a Dispatcher Now</h2>
-              <input
-                name="name"
-                type="text"
-                placeholder="Your Name"
-                required
-                className="w-full p-3 border rounded"
-              />
-              <input
-                name="email"
-                type="email"
-                placeholder="Email Address"
-                required
-                className="w-full p-3 border rounded"
-              />
-              <input
-                name="phone"
-                type="tel"
-                placeholder="Phone Number"
-                required
-                className="w-full p-3 border rounded"
-              />
-              <input
-                name="lanes"
-                type="text"
-                placeholder="Preferred Lanes (e.g. TX to NY)"
-                required
-                className="w-full p-3 border rounded"
-              />
-              <select name="truck_type" required className="w-full p-3 border rounded">
-                <option value="">Select Truck Type</option>
-                <option value="Dry Van">Dry Van</option>
-                <option value="Reefer">Reefer</option>
-                <option value="Flatbed">Flatbed</option>
-                <option value="Hotshot">Hotshot</option>
-              </select>
-              <input
-                name="length"
-                type="text"
-                placeholder="Truck Length (ft)"
-                required
-                className="w-full p-3 border rounded"
-              />
-              <button
-                type="submit"
-                className="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700 transition-all"
-              >
-                Submit to Connect with a Dispatcher Instantly
-              </button>
-            </form>
-          ) : (
-            <div className="text-center">
-              <h3 className="text-2xl font-bold mb-4">Thank you!</h3>
-              <p className="text-lg mb-2">Your dispatcher is reaching out with load options in under 5 minutes.</p>
-              <div className="mx-auto w-16 h-16 animate-spin rounded-full border-t-4 border-blue-600 border-solid"></div>
-            </div>
-          )}
-        </div>
-      </section>
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
 
-      {/* Footer */}
-      <footer className="text-center text-sm text-gray-500 py-6">
-        © {new Date().getFullYear()} QuickHaulXpress. All rights reserved.
-      </footer>
+    .spline-embed {
+      width: 100%;
+      height: 500px;
+      margin-bottom: -120px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .feature-box {
+      background: #1f2833;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-10px);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      background: #1f2833;
+      padding: 30px;
+      border-radius: 20px;
+    }
+
+    form input, form textarea, form select, form button {
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    form button {
+      background: #66fcf1;
+      color: #0b0c10;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    form button:hover {
+      background: #45a29e;
+    }
+
+    .thank-you {
+      display: none;
+      text-align: center;
+    }
+
+    .thank-you.active {
+      display: block;
+      animation: fadeIn 1s;
+    }
+
+    .clock {
+      font-size: 50px;
+      animation: rotate 2s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 class="animate__animated animate__fadeInDown">QuickHaulXpress Dispatch Service</h1>
+    <p class="animate__animated animate__fadeInUp animate__delay-1s">Get loads. Get moving. Get paid.</p>
+  </header>
+
+  <!-- Spline 3D animation embedded -->
+  <div class="spline-embed">
+    <iframe src="https://my.spline.design/truckanimationexample-38b1a03efba4b66eaa4a2d6dfeabf2a3/" frameborder="0" width="100%" height="100%" allowfullscreen></iframe>
+  </div>
+
+  <section class="features">
+    <div class="feature-box animate__animated animate__fadeInLeft">
+      <h2>No Forced Dispatch</h2>
+      <p>Drive when and where you want. You are the boss.</p>
     </div>
-  );
-}
+    <div class="feature-box animate__animated animate__fadeInUp">
+      <h2>Top Paying Loads</h2>
+      <p>Access premium freight that pays more.</p>
+    </div>
+    <div class="feature-box animate__animated animate__fadeInRight">
+      <h2>24/7 Support</h2>
+      <p>Our dispatchers are here around the clock to keep you moving.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="animate__animated animate__fadeIn">Get Started</h2>
+    <form action="https://formspree.io/f/xanjolal" method="POST" id="dispatchForm">
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="text" name="name" placeholder="Full Name" required>
+      <select name="truckType" required>
+        <option value="">Select Truck Type</option>
+        <option value="Dry Van">Dry Van</option>
+        <option value="Reefer">Reefer</option>
+        <option value="Flatbed">Flatbed</option>
+        <option value="Power Only">Power Only</option>
+        <option value="Box Truck">Box Truck</option>
+      </select>
+      <input type="text" name="length" placeholder="Truck Length (ft)" required>
+      <textarea name="message" placeholder="Preferred Lanes or Notes"></textarea>
+      <button type="submit">Submit to connect with the dispatcher instantly</button>
+    </form>
+
+    <div class="thank-you" id="thankYou">
+      <div class="clock">⏰</div>
+      <h3>Thanks! Your dispatcher is reaching you with load options in under 5 minutes.</h3>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById('dispatchForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const data = new FormData(form);
+
+      fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          form.reset();
+          document.getElementById('thankYou').classList.add('active');
+        } else {
+          alert("Something went wrong. Please try again.");
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
