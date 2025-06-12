@@ -152,6 +152,11 @@
       animation: rotate 2s linear infinite;
     }
 
+    #zip-location {
+      font-size: 0.95rem;
+      color: #66fcf1;
+    }
+
     @keyframes rotate {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
@@ -186,41 +191,17 @@
   <div id="truck-animation" class="truck-lottie"></div>
 
   <section class="features">
-    <div class="feature-box">
-      <h2>No Forced Dispatch</h2>
-      <p>Drive when and where you want. You are the boss.</p>
-    </div>
-    <div class="feature-box">
-      <h2>Top Paying Loads</h2>
-      <p>Access premium freight that pays more.</p>
-    </div>
-    <div class="feature-box">
-      <h2>24/7 Support</h2>
-      <p>Our dispatchers are here around the clock to keep you moving.</p>
-    </div>
+    <div class="feature-box"><h2>No Forced Dispatch</h2><p>Drive when and where you want. You are the boss.</p></div>
+    <div class="feature-box"><h2>Top Paying Loads</h2><p>Access premium freight that pays more.</p></div>
+    <div class="feature-box"><h2>24/7 Support</h2><p>Our dispatchers are here around the clock to keep you moving.</p></div>
   </section>
 
   <section class="extra-features">
-    <div class="feature-box">
-      <h3>Hot Shot Dispatch</h3>
-      <p>Fast, reliable dispatching to keep your Hot Shot loads moving across the USA.</p>
-    </div>
-    <div class="feature-box">
-      <h3>Power Only Loads</h3>
-      <p>Access quality Power Only freight and maximize your run efficiency.</p>
-    </div>
-    <div class="feature-box">
-      <h3>Box Truck Services</h3>
-      <p>We help you find consistent, profitable loads for Box Trucks nationwide.</p>
-    </div>
-    <div class="feature-box">
-      <h3>Flatbed Coordination</h3>
-      <p>Secure reliable flatbed freight with 24/7 dispatch support and broker relations.</p>
-    </div>
-    <div class="feature-box">
-      <h3>Reefer Freight</h3>
-      <p>Keep your refrigerated loads moving with trusted dispatch assistance.</p>
-    </div>
+    <div class="feature-box"><h3>Hot Shot Dispatch</h3><p>Fast, reliable dispatching to keep your Hot Shot loads moving across the USA.</p></div>
+    <div class="feature-box"><h3>Power Only Loads</h3><p>Access quality Power Only freight and maximize your run efficiency.</p></div>
+    <div class="feature-box"><h3>Box Truck Services</h3><p>We help you find consistent, profitable loads for Box Trucks nationwide.</p></div>
+    <div class="feature-box"><h3>Flatbed Coordination</h3><p>Secure reliable flatbed freight with 24/7 dispatch support and broker relations.</p></div>
+    <div class="feature-box"><h3>Reefer Freight</h3><p>Keep your refrigerated loads moving with trusted dispatch assistance.</p></div>
   </section>
 
   <section class="about">
@@ -263,7 +244,8 @@
         <option value="Box Truck">Box Truck</option>
         <option value="Hot Shot">Hot Shot</option>
       </select>
-      <input type="text" name="Zip Code" placeholder="Zip Code (ft)" required />
+      <input type="text" name="zip" id="zip" placeholder="ZIP Code" required />
+      <div id="zip-location"></div>
       <input type="text" name="length" placeholder="Truck Length (ft)" required />
       <input type="text" name="Weight" placeholder="Weight (lbs)" required />
       <select name="lanes" required>
@@ -293,7 +275,7 @@
       renderer: 'svg',
       loop: true,
       autoplay: true,
-      path: 'truck-animation.json' // make sure this file is uploaded in your repo root
+      path: 'truck-animation.json'
     });
 
     // Form submission
@@ -305,17 +287,39 @@
       fetch(form.action, {
         method: form.method,
         body: data,
-        headers: {
-          'Accept': 'application/json'
-        }
+        headers: { 'Accept': 'application/json' }
       }).then(response => {
         if (response.ok) {
           form.reset();
           document.getElementById('thankYou').classList.add('active');
+          document.getElementById('zip-location').textContent = '';
         } else {
           alert("Something went wrong. Please try again.");
         }
       });
+    });
+
+    // ZIP code lookup
+    document.getElementById('zip').addEventListener('input', function () {
+      const zip = this.value.trim();
+      const display = document.getElementById('zip-location');
+
+      if (zip.length === 5 && /^\d+$/.test(zip)) {
+        fetch(`https://api.zippopotam.us/us/${zip}`)
+          .then(res => {
+            if (!res.ok) throw new Error();
+            return res.json();
+          })
+          .then(data => {
+            const place = data.places[0];
+            display.textContent = `📍 ${place['place name']}, ${place['state abbreviation']}`;
+          })
+          .catch(() => {
+            display.textContent = '⚠️ ZIP not found';
+          });
+      } else {
+        display.textContent = '';
+      }
     });
   </script>
 </body>
