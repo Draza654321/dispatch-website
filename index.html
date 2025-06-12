@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,18 +8,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.2/lottie.min.js"></script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Outfit', sans-serif;
-    }
-
-    body {
-      background: #0b0c10;
-      color: #ffffff;
-      line-height: 1.6;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+    body { background: #0b0c10; color: #ffffff; line-height: 1.6; }
 
     header {
       background: linear-gradient(135deg, #0f3460 0%, #53354a 100%);
@@ -59,15 +48,13 @@
       transition: 0.3s;
     }
 
-    .btn-primary:hover {
-      background: #45a29e;
-    }
+    .btn-primary:hover { background: #45a29e; }
 
-    .truck-animation {
+    .truck-lottie {
       width: 100%;
       max-width: 600px;
       height: 400px;
-      margin: 40px auto -20px;
+      margin: 0 auto 40px;
     }
 
     section {
@@ -90,18 +77,10 @@
       transition: transform 0.3s;
     }
 
-    .feature-box:hover {
-      transform: translateY(-10px);
-    }
+    .feature-box:hover { transform: translateY(-10px); }
 
-    .feature-box h3, .feature-box h2 {
-      margin-bottom: 10px;
-      color: #66fcf1;
-    }
-
-    .feature-box p {
-      color: #cfd8dc;
-    }
+    .feature-box h3, .feature-box h2 { margin-bottom: 10px; color: #66fcf1; }
+    .feature-box p { color: #cfd8dc; }
 
     .about, .testimonials {
       background: #1f2833;
@@ -155,9 +134,7 @@
       transition: background 0.3s;
     }
 
-    form button:hover {
-      background: #45a29e;
-    }
+    form button:hover { background: #45a29e; }
 
     .thank-you {
       display: none;
@@ -205,35 +182,118 @@
     <a href="tel:+16147146637" class="btn-primary">📞 Call or DM (614) 714-6637</a>
   </header>
 
-  <!-- Truck Lottie animation -->
-  <div id="truck-animation" class="truck-animation"></div>
+  <!-- Lottie Truck Animation -->
+  <div id="truck-animation" class="truck-lottie"></div>
 
   <section class="features">
-    <div class="feature-box animate__animated animate__fadeInLeft">
+    <div class="feature-box">
       <h2>No Forced Dispatch</h2>
       <p>Drive when and where you want. You are the boss.</p>
     </div>
-    <div class="feature-box animate__animated animate__fadeInUp">
+    <div class="feature-box">
       <h2>Top Paying Loads</h2>
       <p>Access premium freight that pays more.</p>
     </div>
-    <div class="feature-box animate__animated animate__fadeInRight">
+    <div class="feature-box">
       <h2>24/7 Support</h2>
       <p>Our dispatchers are here around the clock to keep you moving.</p>
     </div>
   </section>
 
-  <!-- (rest of content remains unchanged) -->
+  <section class="extra-features">
+    <div class="feature-box">
+      <h3>Hot Shot Dispatch</h3>
+      <p>Fast, reliable dispatching to keep your Hot Shot loads moving across the USA.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Power Only Loads</h3>
+      <p>Access quality Power Only freight and maximize your run efficiency.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Box Truck Services</h3>
+      <p>We help you find consistent, profitable loads for Box Trucks nationwide.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Flatbed Coordination</h3>
+      <p>Secure reliable flatbed freight with 24/7 dispatch support and broker relations.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Reefer Freight</h3>
+      <p>Keep your refrigerated loads moving with trusted dispatch assistance.</p>
+    </div>
+  </section>
+
+  <section class="about">
+    <h2>About QuickHaulXpress</h2>
+    <p><strong>Hi, this is Lucas</strong>, from QuickHaulXpress — a professional truck dispatch service based in Austin, TX. We keep your trucks loaded with premium freight nationwide.</p>
+    <ul>
+      <li>📦 Load planning around your schedule</li>
+      <li>💸 Top-paying rate negotiation</li>
+      <li>📑 Complete paperwork handling (invoices, insurance, factoring)</li>
+      <li>🧑‍💼 Dedicated dispatcher</li>
+      <li>🚚 Expertise in Dry Vans, Reefers, Flatbeds, Box Trucks & Power Only</li>
+    </ul>
+  </section>
+
+  <section class="testimonials">
+    <h2>Carrier Testimonials</h2>
+    <div class="testimonial">
+      <p>"QuickHaulXpress keeps my reefer loaded every week. Super reliable team!"</p>
+      <div class="author">– Darnell S., OH</div>
+    </div>
+    <div class="testimonial">
+      <p>"Lucas handles everything. I just drive and get paid. Simple as that."</p>
+      <div class="author">– Jermaine B., TX</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="animate__animated animate__fadeIn">Get Started</h2>
+    <form action="https://formspree.io/f/xanjolal" method="POST" id="dispatchForm">
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="tel" name="phone" placeholder="Phone Number" required />
+      <input type="text" name="mc" placeholder="MC Number" required />
+      <select name="truckType" required>
+        <option value="">Select Truck Type</option>
+        <option value="Dry Van">Dry Van</option>
+        <option value="Reefer">Reefer</option>
+        <option value="Flatbed">Flatbed</option>
+        <option value="Power Only">Power Only</option>
+        <option value="Box Truck">Box Truck</option>
+      </select>
+      <input type="text" name="length" placeholder="Truck Length (ft)" required />
+      <select name="lanes" required>
+        <option value="">Preferred Lanes</option>
+        <option value="OTR">OTR (Over-the-Road)</option>
+        <option value="Regional">Regional</option>
+        <option value="Local">Local</option>
+      </select>
+      <textarea name="message" placeholder="Any notes or preferences?"></textarea>
+      <button type="submit">Submit to connect with the dispatcher instantly</button>
+    </form>
+
+    <div class="thank-you" id="thankYou">
+      <div class="clock">⏰</div>
+      <h3>Thanks! Your dispatcher is reaching you with load options in under 5 minutes.</h3>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 QuickHaulXpress. All rights reserved.
+  </footer>
 
   <script>
+    // Lottie animation
     lottie.loadAnimation({
       container: document.getElementById('truck-animation'),
       renderer: 'svg',
       loop: true,
       autoplay: true,
-      path: 'truck-animation.json' // Make sure this file is uploaded in your repo
+      path: 'truck-animation.json' // make sure this file is uploaded in your repo root
     });
 
+    // Form submission
     document.getElementById('dispatchForm').addEventListener('submit', function (e) {
       e.preventDefault();
       const form = e.target;
@@ -256,5 +316,4 @@
     });
   </script>
 </body>
-
 </html>
