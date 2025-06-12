@@ -21,16 +21,18 @@
       line-height: 1.6;
     }
 
-    section {
-      padding: 80px 20px;
-      max-width: 1200px;
-      margin: auto;
+    header {
+      background: linear-gradient(135deg, #0f3460 0%, #53354a 100%);
+      text-align: center;
+      padding: 60px 20px 30px;
+      position: relative;
     }
 
-    header {
-      background: #1f2833;
-      text-align: center;
-      padding: 50px 20px;
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 180px;
     }
 
     header h1 {
@@ -38,13 +40,41 @@
       margin-bottom: 10px;
     }
 
+    header p {
+      font-size: 1.3rem;
+      opacity: 0.9;
+      max-width: 800px;
+      margin: 0 auto 20px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: #66fcf1;
+      color: #0b0c10;
+      padding: 14px 40px;
+      border-radius: 40px;
+      font-weight: 700;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+      background: #45a29e;
+    }
+
     .spline-embed {
       width: 100%;
       height: 500px;
-      margin-bottom: -120px;
+      margin-top: -30px;
     }
 
-    .features {
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .features, .extra-features {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 30px;
@@ -52,7 +82,7 @@
 
     .feature-box {
       background: #1f2833;
-      padding: 20px;
+      padding: 25px;
       border-radius: 20px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.3);
       transition: transform 0.3s;
@@ -60,6 +90,43 @@
 
     .feature-box:hover {
       transform: translateY(-10px);
+    }
+
+    .feature-box h3, .feature-box h2 {
+      margin-bottom: 10px;
+      color: #66fcf1;
+    }
+
+    .feature-box p {
+      color: #cfd8dc;
+    }
+
+    .about, .testimonials {
+      background: #1f2833;
+      border-radius: 20px;
+      padding: 40px;
+      margin-top: 40px;
+    }
+
+    .about h2, .testimonials h2 {
+      text-align: center;
+      color: #66fcf1;
+      margin-bottom: 30px;
+    }
+
+    .testimonial {
+      background: #0b0c10;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+      font-style: italic;
+    }
+
+    .testimonial .author {
+      margin-top: 10px;
+      font-weight: 600;
+      font-style: normal;
+      color: #66fcf1;
     }
 
     form {
@@ -93,6 +160,7 @@
     .thank-you {
       display: none;
       text-align: center;
+      margin-top: 30px;
     }
 
     .thank-you.active {
@@ -109,16 +177,33 @@
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9rem;
+      color: #999;
+    }
+
+    @media(max-width: 768px) {
+      .logo {
+        position: static;
+        display: block;
+        margin: 10px auto;
+      }
+    }
   </style>
 </head>
 
 <body>
   <header>
-    <h1 class="animate__animated animate__fadeInDown">QuickHaulXpress Dispatch Service</h1>
-    <p class="animate__animated animate__fadeInUp animate__delay-1s">Get loads. Get moving. Get paid.</p>
+    <img src="logo.png" alt="QuickHaulXpress Logo" class="logo" />
+    <h1 class="animate__animated animate__fadeInDown">🚛 Owner-Operators, We’ve Got You</h1>
+    <p class="animate__animated animate__fadeInUp animate__delay-1s">Keep Rolling — We Handle the Rest. Dispatch Services Nationwide for Hot Shot, Flatbed, Box Trucks, Reefers & Power Only</p>
+    <a href="tel:+16147146637" class="btn-primary">📞 Call or DM (614) 714-6637</a>
   </header>
 
-  <!-- Spline 3D animation embedded -->
+  <!-- Spline 3D animation -->
   <div class="spline-embed">
     <iframe src="https://my.spline.design/truckanimationexample-38b1a03efba4b66eaa4a2d6dfeabf2a3/" frameborder="0" width="100%" height="100%" allowfullscreen></iframe>
   </div>
@@ -135,6 +220,53 @@
     <div class="feature-box animate__animated animate__fadeInRight">
       <h2>24/7 Support</h2>
       <p>Our dispatchers are here around the clock to keep you moving.</p>
+    </div>
+  </section>
+
+  <section class="extra-features">
+    <div class="feature-box">
+      <h3>Hot Shot Dispatch</h3>
+      <p>Fast, reliable dispatching to keep your Hot Shot loads moving across the USA.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Power Only Loads</h3>
+      <p>Access quality Power Only freight and maximize your run efficiency.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Box Truck Services</h3>
+      <p>We help you find consistent, profitable loads for Box Trucks nationwide.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Flatbed Coordination</h3>
+      <p>Secure reliable flatbed freight with 24/7 dispatch support and broker relations.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Reefer Freight</h3>
+      <p>Keep your refrigerated loads moving with trusted dispatch assistance.</p>
+    </div>
+  </section>
+
+  <section class="about">
+    <h2>About QuickHaulXpress</h2>
+    <p><strong>Hi, this is Lucas</strong>, from QuickHaulXpress — a professional truck dispatch service based in Austin, TX. We keep your trucks loaded with premium freight nationwide.</p>
+    <ul>
+      <li>📦 Load planning around your schedule</li>
+      <li>💸 Top-paying rate negotiation</li>
+      <li>📑 Complete paperwork handling (invoices, insurance, factoring)</li>
+      <li>🧑‍💼 Dedicated dispatcher</li>
+      <li>🚚 Expertise in Dry Vans, Reefers, Flatbeds, Box Trucks & Power Only</li>
+    </ul>
+  </section>
+
+  <section class="testimonials">
+    <h2>Carrier Testimonials</h2>
+    <div class="testimonial">
+      <p>"QuickHaulXpress keeps my reefer loaded every week. Super reliable team!"</p>
+      <div class="author">– Darnell S., OH</div>
+    </div>
+    <div class="testimonial">
+      <p>"Lucas handles everything. I just drive and get paid. Simple as that."</p>
+      <div class="author">– Jermaine B., TX</div>
     </div>
   </section>
 
@@ -162,10 +294,13 @@
     </div>
   </section>
 
+  <footer>
+    &copy; 2025 QuickHaulXpress. All rights reserved.
+  </footer>
+
   <script>
     document.getElementById('dispatchForm').addEventListener('submit', function (e) {
       e.preventDefault();
-
       const form = e.target;
       const data = new FormData(form);
 
@@ -186,5 +321,4 @@
     });
   </script>
 </body>
-
 </html>
