@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>USA Truck Dispatch Services</title>
   <style>
-    /* Reset and basics */
     * {
       box-sizing: border-box;
     }
@@ -20,22 +19,32 @@
       text-decoration: none;
       color: inherit;
     }
-    /* Container */
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
-    /* Header Section */
+    /* Header */
     header {
       background: linear-gradient(135deg, #0f3460 0%, #53354a 100%);
       color: white;
-      padding: 80px 20px 60px;
+      padding: 20px 20px 60px;
       text-align: center;
+      position: relative;
+    }
+    /* Logo */
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 140px;
+      height: auto;
+      object-fit: contain;
     }
     header h1 {
       font-size: 3rem;
+      margin-top: 70px;
       margin-bottom: 0.3em;
       font-weight: 700;
       letter-spacing: 1px;
@@ -63,6 +72,16 @@
     .btn-primary:hover {
       background: #e65a4e;
       box-shadow: 0 15px 20px rgba(230, 90, 78, 0.5);
+    }
+    /* Hero Image */
+    .hero-img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 60px;
+      margin-top: -40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
 
     /* Features Section */
@@ -119,6 +138,53 @@
       line-height: 1.5;
     }
 
+    /* Testimonials */
+    section.testimonials {
+      max-width: 900px;
+      margin: 0 auto 80px;
+      padding: 0 20px;
+    }
+    section.testimonials h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: 700;
+      color: #0f3460;
+      font-size: 2rem;
+    }
+    .testimonial-list {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .testimonial {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      max-width: 280px;
+      font-style: italic;
+      position: relative;
+    }
+    .testimonial::before {
+      content: "“";
+      font-size: 3rem;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      color: #ff6f61;
+      font-weight: bold;
+    }
+    .testimonial p {
+      margin: 0 0 15px;
+      color: #555;
+    }
+    .testimonial .author {
+      font-weight: 700;
+      color: #53354a;
+      font-style: normal;
+    }
+
     /* Footer */
     footer {
       text-align: center;
@@ -141,11 +207,28 @@
         flex-direction: column;
         align-items: center;
       }
+      .testimonial-list {
+        flex-direction: column;
+        align-items: center;
+      }
+      .logo {
+        position: static;
+        display: block;
+        margin: 10px auto 30px;
+        width: 160px;
+      }
+      header {
+        padding-top: 80px;
+      }
+      .hero-img {
+        margin-top: 20px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
+    <img src="https://i.ibb.co/tx0WQHb/your-logo.png" alt="USA Dispatch Logo" class="logo" />
     <div class="container">
       <h1>🚛 Owner-Operators, We’ve Got You</h1>
       <p>Keep Rolling — We Handle the Rest. Dispatch Services Nationwide for Hot Shot, Flatbed, Box Trucks, Reefers & Power Only</p>
@@ -153,33 +236,55 @@
     </div>
   </header>
 
-  <section class="features container">
-    <div class="feature">
-      <h3>Hot Shot Dispatch</h3>
-      <p>Fast, reliable dispatching to keep your Hot Shot loads moving across the USA.</p>
-    </div>
-    <div class="feature">
-      <h3>Power Only Loads</h3>
-      <p>Access quality Power Only freight and maximize your run efficiency.</p>
-    </div>
-    <div class="feature">
-      <h3>Box Truck Services</h3>
-      <p>We help you find consistent, profitable loads for Box Trucks nationwide.</p>
-    </div>
-    <div class="feature">
-      <h3>Flatbed Coordination</h3>
-      <p>Secure reliable flatbed freight with 24/7 dispatch support and broker relations.</p>
-    </div>
-    <div class="feature">
-      <h3>Reefer Freight</h3>
-      <p>Keep your refrigerated loads moving with trusted dispatch assistance.</p>
-    </div>
-  </section>
+  <div class="container">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1350&q=80" alt="Truck on highway" />
 
-  <section class="why-us">
-    <h2>Why Choose Us?</h2>
-    <p>We work with many carriers and trusted brokers across the USA to provide you with the best, high-paying loads. Our 24/7 dispatch team ensures your truck stays moving and profitable.</p>
-  </section>
+    <section class="features">
+      <div class="feature">
+        <h3>Hot Shot Dispatch</h3>
+        <p>Fast, reliable dispatching to keep your Hot Shot loads moving across the USA.</p>
+      </div>
+      <div class="feature">
+        <h3>Power Only Loads</h3>
+        <p>Access quality Power Only freight and maximize your run efficiency.</p>
+      </div>
+      <div class="feature">
+        <h3>Box Truck Services</h3>
+        <p>We help you find consistent, profitable loads for Box Trucks nationwide.</p>
+      </div>
+      <div class="feature">
+        <h3>Flatbed Coordination</h3>
+        <p>Secure reliable flatbed freight with 24/7 dispatch support and broker relations.</p>
+      </div>
+      <div class="feature">
+        <h3>Reefer Freight</h3>
+        <p>Keep your refrigerated loads moving with trusted dispatch assistance.</p>
+      </div>
+    </section>
+
+    <section class="why-us">
+      <h2>Why Choose Us?</h2>
+      <p>We work with many carriers and trusted brokers across the USA to provide you with the best, high-paying loads. Our 24/7 dispatch team ensures your truck stays moving and profitable.</p>
+    </section>
+
+    <section class="testimonials">
+      <h2>What Our Drivers Say</h2>
+      <div class="testimonial-list">
+        <div class="testimonial">
+          <p>Best dispatch service I've ever worked with. Always finds me loads that pay well and keep me busy.</p>
+          <div class="author">— Mike T., Owner-Operator</div>
+        </div>
+        <div class="testimonial">
+          <p>Reliable and fast communication. They really care about keeping us on the road and profitable.</p>
+          <div class="author">— Sarah L., Flatbed Driver</div>
+        </div>
+        <div class="testimonial">
+          <p>Helped me get consistent Power Only loads with great brokers. Highly recommend!</p>
+          <div class="author">— David K., Power Only Operator</div>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <footer>
     &copy; 2025 USA Dispatch Services. Call us anytime: +1 347 571 901
