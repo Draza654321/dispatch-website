@@ -6,179 +6,101 @@
   <title>QuickHaulXpress Dispatch Services</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    * {
-      box-sizing: border-box;
-    }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      background: #f4f8fb;
-      color: #222;
+      font-family: "Segoe UI", sans-serif;
       line-height: 1.6;
-      scroll-behavior: smooth;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+      color: #333;
     }
     .container {
-      max-width: 1100px;
+      max-width: 960px;
       margin: 0 auto;
-      padding: 0 20px 60px;
+      padding: 20px;
     }
     header {
-      background: linear-gradient(135deg, #0f3460 0%, #53354a 100%);
-      color: white;
-      padding: 20px 20px 60px;
+      background-color: #111;
+      color: #fff;
+      padding: 40px 20px;
       text-align: center;
-      position: relative;
-    }
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 300px;
-      height: auto;
-      object-fit: contain;
     }
     header h1 {
-      font-size: 3rem;
-      margin-top: 70px;
-      margin-bottom: 0.3em;
-      font-weight: 700;
-      letter-spacing: 1px;
+      font-size: 2.5em;
     }
     header p {
-      font-size: 1.3rem;
-      margin-bottom: 1.5em;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      font-weight: 500;
-      opacity: 0.85;
+      font-size: 1.2em;
     }
     .btn-primary {
       display: inline-block;
-      background: #ff6f61;
+      background-color: #27ae60;
       color: white;
-      padding: 18px 50px;
-      border-radius: 40px;
-      font-weight: 700;
-      font-size: 1.2rem;
-      box-shadow: 0 10px 15px rgba(255, 111, 97, 0.4);
-      transition: background 0.3s ease;
-      margin-top: 15px;
-    }
-    .btn-primary:hover {
-      background: #e65a4e;
-      box-shadow: 0 15px 20px rgba(230, 90, 78, 0.5);
+      padding: 12px 24px;
+      margin-top: 20px;
+      text-decoration: none;
+      border-radius: 5px;
     }
     .hero-img {
       width: 100%;
-      max-height: 400px;
-      object-fit: cover;
-      border-radius: 15px;
-      margin: -40px 0 60px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
-    section.features {
-      margin: 60px 0;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-    }
-    .feature {
-      background: white;
-      flex: 1 1 280px;
-      max-width: 320px;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
-      padding: 30px;
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-    .feature:hover {
-      transform: translateY(-10px);
-    }
-    .feature h3 {
-      margin-bottom: 15px;
-      color: #53354a;
-      font-weight: 700;
-    }
-    .feature p {
-      color: #555;
-      font-size: 1rem;
-      line-height: 1.4;
-    }
-    section.contact {
-      background: white;
-      padding: 50px 30px;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      max-width: 900px;
-      margin: 0 auto 80px;
-    }
-    section.contact h2 {
-      text-align: center;
-      font-size: 2rem;
+      height: auto;
+      border-radius: 10px;
       margin-bottom: 30px;
-      font-weight: 700;
-      color: #0f3460;
     }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      max-width: 600px;
-      margin: 0 auto;
+    section {
+      margin-bottom: 40px;
     }
-    input, textarea, select {
-      padding: 15px;
-      font-size: 1rem;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      resize: vertical;
-      font-family: inherit;
-    }
-    input:focus, textarea:focus, select:focus {
-      border-color: #ff6f61;
-      outline: none;
-      box-shadow: 0 0 5px #ff6f61;
-    }
-    button[type="submit"] {
-      background: #ff6f61;
-      color: white;
-      border: none;
-      padding: 18px;
-      font-size: 1.1rem;
-      border-radius: 40px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    button[type="submit"]:hover {
-      background: #e65a4e;
-    }
-    .social-icons {
-      margin-top: 30px;
-      text-align: center;
+    h2 {
+      color: #111;
+      font-size: 1.8em;
+      margin-bottom: 10px;
     }
     .social-icons a {
       margin: 0 10px;
-      color: #0f3460;
-      font-size: 1.5rem;
-      transition: color 0.3s ease;
+      color: #27ae60;
+      font-size: 1.5em;
     }
-    .social-icons a:hover {
-      color: #ff6f61;
+    footer {
+      background-color: #111;
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+    }
+    form {
+      display: grid;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    form input, form select, form textarea, form button {
+      padding: 12px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: inherit;
+    }
+    form button {
+      background-color: #27ae60;
+      color: white;
+      cursor: pointer;
+      border: none;
+    }
+    #whatsapp-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25d366;
+      color: white;
+      font-size: 28px;
+      padding: 14px;
+      border-radius: 50%;
+      text-align: center;
+      z-index: 100;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="QuickHaulXpress Logo" class="logo" />
     <div class="container">
+      <img src="logo.png" alt="QuickHaulXpress Logo" style="width: 180px;" />
       <h1>🚛 Owner-Operators, We’ve Got You</h1>
       <p>Keep Rolling — We Handle the Rest. Dispatch Services Nationwide for Hot Shot, Flatbed, Box Trucks, Reefers & Power Only</p>
       <a href="tel:+16147146637" class="btn-primary">📞 Call or DM (614) 714-6637</a>
@@ -186,42 +108,79 @@
   </header>
 
   <div class="container">
-    <img class="hero-img" src="https://images.unsplash.com/photo-1591768793355-74d04bb6608f" alt="Truck on highway" />
+    <img class="hero-img" src="https://images.unsplash.com/photo-1591768793355-74d04bb6608f?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Truck on highway" />
 
-    <!-- FEATURES OMITTED FOR BREVITY -->
+    <section>
+      <h2>Why QuickHaulXpress?</h2>
+      <ul>
+        <li>✅ Personalized Load Booking</li>
+        <li>✅ Route Optimization</li>
+        <li>✅ Rate Negotiation</li>
+        <li>✅ Broker Credit Checks</li>
+        <li>✅ Paperwork & Invoicing</li>
+        <li>✅ Detention/Tonu Assistance</li>
+      </ul>
+    </section>
 
-    <section class="contact" id="contact">
-      <h2>Carrier Onboarding Form</h2>
-      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data">
-        <input type="text" name="mc_number" placeholder="MC Number" required />
-        <input type="text" name="truck_type" placeholder="Truck Type (Box, Reefer, Flatbed...)" required />
-        <input type="text" name="zip_code" placeholder="ZIP Code" required />
-        <select name="preferred_lanes" required>
-          <option value="">Preferred Lanes</option>
+    <section id="about">
+      <h2>About Us</h2>
+      <p>We're a team of passionate dispatchers with years of experience in logistics. Whether you're a one-truck business or a growing fleet, we’ve got the loads and support you need to stay moving and profitable.</p>
+    </section>
+
+    <section id="testimonials">
+      <h2>What Our Drivers Say</h2>
+      <blockquote>“Since joining QuickHaulXpress, I’ve doubled my weekly revenue. No more sitting!”</blockquote>
+      <p>- Marcus J., Owner Operator</p>
+    </section>
+
+    <section id="contact">
+      <h2>Get Started</h2>
+      <p>Fill out this form and our team will reach out to onboard you:</p>
+
+      <form action="https://formspree.io/f/xanjolal" method="POST" enctype="multipart/form-data">
+        <label for="mc">MC Number</label>
+        <input type="text" id="mc" name="MC Number" placeholder="Enter your MC Number" required />
+
+        <label for="truck">Truck Type</label>
+        <input type="text" id="truck" name="Truck Type" placeholder="e.g., Box Truck, Reefer, Power Only" required />
+
+        <label for="zip">ZIP Code</label>
+        <input type="text" id="zip" name="ZIP Code" placeholder="Enter your ZIP code" required />
+
+        <label for="lanes">Preferred Lanes</label>
+        <select id="lanes" name="Preferred Lanes" required>
+          <option value="" disabled selected>Select lanes</option>
+          <option value="OTR">OTR (Over the Road)</option>
           <option value="Regional">Regional</option>
-          <option value="OTR">Over The Road (OTR)</option>
           <option value="Local">Local</option>
         </select>
-        <input type="email" name="email" placeholder="Active Email Address" required />
-        <input type="tel" name="phone" placeholder="Phone Number" required />
-        <label>Optional: Upload Authority, W9, Insurance Cert
-          <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" />
-        </label>
-        <button type="submit">Submit & Show Me Loads</button>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="Phone Number" placeholder="Enter your phone number" required />
+
+        <label for="documents">Upload Documents (Optional)</label>
+        <input type="file" id="documents" name="Documents" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" />
+
+        <button type="submit">Get My Loads & Start</button>
       </form>
+
       <div class="social-icons">
-        <a href="https://www.instagram.com/quickhaulxpress/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="mailto:lucas.otrdispatch@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="tel:+16147146637" aria-label="Phone"><i class="fas fa-phone"></i></a>
+        <a href="https://www.instagram.com/quickhaulxpress/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:lucas.otrdispatch@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="tel:+16147146637"><i class="fas fa-phone"></i></a>
       </div>
     </section>
   </div>
 
-  <footer style="text-align: center; padding: 20px; color: #666;">
-    &copy; 2025 QuickHaulXpress. Call anytime: (614) 714-6637
+  <footer>
+    &copy; 2025 QuickHaulXpress Dispatch Services. Call us anytime: (614) 714-6637
   </footer>
 
-  <a href="https://wa.me/16147146637" target="_blank" id="whatsapp-btn" aria-label="Chat on WhatsApp" style="position: fixed; bottom: 25px; right: 25px; background-color: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; box-shadow: 0 5px 10px rgba(0,0,0,0.3); z-index: 9999;">
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/16147146637" target="_blank" id="whatsapp-btn" aria-label="Chat on WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
 </body>
