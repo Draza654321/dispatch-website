@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>QuickHaulXpress Dispatch</title>
-  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="icon" href="logo.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.2/lottie.min.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
-    body { background: #0b0c10; color: #ffffff; line-height: 1.6; scroll-behavior: smooth; }
+    body { background: #0b0c10; color: #ffffff; line-height: 1.6; }
 
     header {
       background: linear-gradient(135deg, #0f3460 0%, #53354a 100%);
@@ -83,23 +83,24 @@
     .feature-box h3, .feature-box h2 { margin-bottom: 10px; color: #66fcf1; }
     .feature-box p { color: #cfd8dc; }
 
-    .about, .testimonials {
+    .about, .testimonials, .contact {
       background: #1f2833;
       border-radius: 20px;
       padding: 40px;
       margin-top: 40px;
     }
 
-    .about h2, .testimonials h2 {
+    .about h2, .testimonials h2, .contact h2 {
       text-align: center;
       color: #66fcf1;
       margin-bottom: 30px;
     }
 
     .testimonial-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
     }
 
     .testimonial {
@@ -108,11 +109,8 @@
       border-radius: 15px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.3);
       font-style: italic;
-      transition: transform 0.3s;
-    }
-
-    .testimonial:hover {
-      transform: translateY(-5px);
+      flex: 1 1 250px;
+      max-width: 300px;
     }
 
     .testimonial .author {
@@ -125,28 +123,42 @@
     form {
       display: flex;
       flex-direction: column;
-      gap: 15px;
-      background: #1f2833;
-      padding: 30px;
-      border-radius: 20px;
+      gap: 20px;
     }
 
-    form input, form textarea, form select, form button {
+    .form-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .form-row > * {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    input, select, textarea {
       padding: 12px;
       border: none;
       border-radius: 10px;
       font-size: 1rem;
+      width: 100%;
     }
 
-    form button {
+    textarea { resize: vertical; }
+
+    button {
       background: #66fcf1;
       color: #0b0c10;
       font-weight: bold;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: 0.3s;
     }
 
-    form button:hover { background: #45a29e; }
+    button:hover { background: #45a29e; }
 
     .thank-you {
       display: none;
@@ -164,14 +176,14 @@
       animation: rotate 2s linear infinite;
     }
 
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
     #zip-location {
       font-size: 0.95rem;
       color: #66fcf1;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
     footer {
@@ -181,11 +193,14 @@
       color: #999;
     }
 
-    @media(max-width: 768px) {
+    @media (max-width: 768px) {
       .logo {
         position: static;
         display: block;
         margin: 10px auto;
+      }
+      .form-row {
+        flex-direction: column;
       }
     }
   </style>
@@ -195,11 +210,10 @@
   <header>
     <img src="logo.png" alt="QuickHaulXpress Logo" class="logo" />
     <h1 class="animate__animated animate__fadeInDown">🚛 Owner-Operators, We’ve Got You</h1>
-    <p class="animate__animated animate__fadeInUp animate__delay-1s">Keep Rolling — We Handle the Rest. Dispatch Services Nationwide for Hot Shot, Flatbed, Box Trucks, Reefers & Power Only</p>
+    <p class="animate__animated animate__fadeInUp animate__delay-1s">Keep Rolling — We Handle the Rest.</p>
     <a href="tel:+16147146637" class="btn-primary">📞 Call or DM (614) 714-6637</a>
   </header>
 
-  <!-- Lottie Truck Animation -->
   <div id="truck-animation" class="truck-lottie"></div>
 
   <section class="features">
@@ -209,75 +223,77 @@
   </section>
 
   <section class="extra-features">
-    <div class="feature-box"><h3>Hot Shot Dispatch</h3><p>Fast, reliable dispatching to keep your Hot Shot loads moving across the USA.</p></div>
-    <div class="feature-box"><h3>Power Only Loads</h3><p>Access quality Power Only freight and maximize your run efficiency.</p></div>
-    <div class="feature-box"><h3>Box Truck Services</h3><p>We help you find consistent, profitable loads for Box Trucks nationwide.</p></div>
-    <div class="feature-box"><h3>Flatbed Coordination</h3><p>Secure reliable flatbed freight with 24/7 dispatch support and broker relations.</p></div>
-    <div class="feature-box"><h3>Reefer Freight</h3><p>Keep your refrigerated loads moving with trusted dispatch assistance.</p></div>
+    <div class="feature-box"><h3>Hot Shot Dispatch</h3><p>Fast, reliable dispatching to keep your Hot Shot loads moving.</p></div>
+    <div class="feature-box"><h3>Power Only Loads</h3><p>Access quality Power Only freight and maximize efficiency.</p></div>
+    <div class="feature-box"><h3>Box Truck Services</h3><p>Find consistent, profitable loads nationwide.</p></div>
+    <div class="feature-box"><h3>Flatbed Coordination</h3><p>Reliable freight with 24/7 dispatch support.</p></div>
+    <div class="feature-box"><h3>Reefer Freight</h3><p>Keep your refrigerated loads moving without hassle.</p></div>
   </section>
 
   <section class="about">
     <h2>About QuickHaulXpress</h2>
-    <p><strong>Hi, this is Lucas</strong>, from QuickHaulXpress — a professional truck dispatch service based in Austin, TX. We keep your trucks loaded with premium freight nationwide.</p>
+    <p><strong>Hi, this is Lucas</strong>, from QuickHaulXpress — based in Austin, TX. We keep your trucks loaded with premium freight nationwide.</p>
     <ul>
       <li>📦 Load planning around your schedule</li>
       <li>💸 Top-paying rate negotiation</li>
-      <li>📑 Complete paperwork handling (invoices, insurance, factoring)</li>
+      <li>📑 Complete paperwork handling</li>
       <li>🧑‍💼 Dedicated dispatcher</li>
-      <li>🚚 Expertise in Dry Vans, Reefers, Flatbeds, Box Trucks & Power Only</li>
+      <li>🚚 Expertise in all equipment types</li>
     </ul>
   </section>
 
   <section class="testimonials">
     <h2>Carrier Testimonials</h2>
     <div class="testimonial-list">
-      <div class="testimonial animate__animated animate__fadeInLeft">
-        <p>"QuickHaulXpress keeps my reefer loaded every week. Super reliable team!"</p>
-        <div class="author">– Darnell S., OH</div>
-      </div>
-      <div class="testimonial animate__animated animate__fadeInUp">
-        <p>"Lucas handles everything. I just drive and get paid. Simple as that."</p>
-        <div class="author">– Jermaine B., TX</div>
-      </div>
-      <div class="testimonial animate__animated animate__fadeInRight">
-        <p>"The dispatch team respects my time and always gets me paid top dollar."</p>
-        <div class="author">– Luis M., GA</div>
-      </div>
-      <div class="testimonial animate__animated animate__fadeInUp">
-        <p>"It’s like having a business partner who’s got my back 24/7."</p>
-        <div class="author">– Angela W., IL</div>
-      </div>
+      <div class="testimonial scroll-fade"><p>"QuickHaulXpress keeps my reefer loaded every week. Super reliable!"</p><div class="author">– Darnell S., OH</div></div>
+      <div class="testimonial scroll-fade"><p>"Lucas handles everything. I just drive and get paid."</p><div class="author">– Jermaine B., TX</div></div>
+      <div class="testimonial scroll-fade"><p>"Fair rates and smooth dispatching. Solid team all around."</p><div class="author">– Lisa M., GA</div></div>
+      <div class="testimonial scroll-fade"><p>"Best dispatch service I've ever worked with. Period."</p><div class="author">– Tony R., NY</div></div>
     </div>
   </section>
 
-  <section id="contact">
-    <h2 class="animate__animated animate__fadeIn">Get Started</h2>
+  <section class="contact" id="contact">
+    <h2 class="scroll-fade">Get Started</h2>
     <form action="https://formspree.io/f/xanjolal" method="POST" id="dispatchForm">
-      <input type="text" name="name" placeholder="Full Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <input type="tel" name="phone" placeholder="Phone Number" required />
-      <input type="text" name="mc" placeholder="MC Number" required />
-      <select name="truckType" required>
-        <option value="">Select Truck Type</option>
-        <option value="Dry Van">Dry Van</option>
-        <option value="Reefer">Reefer</option>
-        <option value="Flatbed">Flatbed</option>
-        <option value="Power Only">Power Only</option>
-        <option value="Box Truck">Box Truck</option>
-        <option value="Hot Shot">Hot Shot</option>
-      </select>
-      <input type="text" name="zip" id="zip" placeholder="ZIP Code" required />
-      <div id="zip-location"></div>
-      <input type="text" name="length" placeholder="Truck Length (ft)" required />
-      <input type="text" name="Weight" placeholder="Weight (lbs)" required />
-      <select name="lanes" required>
-        <option value="">Preferred Lanes</option>
-        <option value="OTR">OTR (Over-the-Road)</option>
-        <option value="Regional">Regional</option>
-        <option value="Local">Local</option>
-      </select>
-      <textarea name="message" placeholder="Any notes or preferences?"></textarea>
-      <button type="submit">Submit to connect with the dispatcher instantly</button>
+      <div class="form-row scroll-fade">
+        <input type="text" name="name" placeholder="Full Name" required />
+        <input type="tel" name="phone" placeholder="Phone Number" required />
+      </div>
+      <div class="form-row scroll-fade">
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="text" name="mc" placeholder="MC Number" required />
+      </div>
+      <div class="form-row scroll-fade">
+        <select name="truckType" required>
+          <option value="">Select Truck Type</option>
+          <option value="Dry Van">Dry Van</option>
+          <option value="Reefer">Reefer</option>
+          <option value="Flatbed">Flatbed</option>
+          <option value="Power Only">Power Only</option>
+          <option value="Box Truck">Box Truck</option>
+          <option value="Hot Shot">Hot Shot</option>
+        </select>
+        <input type="text" name="zip" id="zip" placeholder="ZIP Code" required />
+      </div>
+      <div id="zip-location" class="scroll-fade"></div>
+      <div class="form-row scroll-fade">
+        <input type="text" name="length" placeholder="Truck Length (ft)" required />
+        <input type="text" name="Weight" placeholder="Weight (lbs)" required />
+      </div>
+      <div class="form-row scroll-fade">
+        <select name="lanes" required>
+          <option value="">Preferred Lanes</option>
+          <option value="OTR">OTR (Over-the-Road)</option>
+          <option value="Regional">Regional</option>
+          <option value="Local">Local</option>
+        </select>
+      </div>
+      <div class="scroll-fade">
+        <textarea name="message" rows="4" placeholder="Any notes or preferences?"></textarea>
+      </div>
+      <div class="scroll-fade">
+        <button type="submit">Submit to connect with the dispatcher instantly</button>
+      </div>
     </form>
 
     <div class="thank-you" id="thankYou">
@@ -291,6 +307,7 @@
   </footer>
 
   <script>
+    // Lottie animation
     lottie.loadAnimation({
       container: document.getElementById('truck-animation'),
       renderer: 'svg',
@@ -299,6 +316,7 @@
       path: 'truck-animation.json'
     });
 
+    // Form submission
     document.getElementById('dispatchForm').addEventListener('submit', function (e) {
       e.preventDefault();
       const form = e.target;
@@ -319,16 +337,13 @@
       });
     });
 
+    // ZIP Code Lookup
     document.getElementById('zip').addEventListener('input', function () {
       const zip = this.value.trim();
       const display = document.getElementById('zip-location');
-
       if (zip.length === 5 && /^\d+$/.test(zip)) {
         fetch(`https://api.zippopotam.us/us/${zip}`)
-          .then(res => {
-            if (!res.ok) throw new Error();
-            return res.json();
-          })
+          .then(res => res.ok ? res.json() : Promise.reject())
           .then(data => {
             const place = data.places[0];
             display.textContent = `📍 ${place['place name']}, ${place['state abbreviation']}`;
@@ -340,6 +355,19 @@
         display.textContent = '';
       }
     });
+
+    // Scroll animation via IntersectionObserver
+    const fadeElems = document.querySelectorAll('.scroll-fade');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    fadeElems.forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
