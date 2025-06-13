@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>QuickHaulXpress Dispatch</title>
+  <link rel="icon" href="logo.png" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.2/lottie.min.js"></script>
@@ -246,6 +247,7 @@
       </select>
       <input type="text" name="zip" id="zip" placeholder="ZIP Code" required />
       <div id="zip-location"></div>
+      <input type="hidden" name="zip_location" id="zip-location-hidden" />
       <input type="text" name="length" placeholder="Truck Length (ft)" required />
       <input type="text" name="Weight" placeholder="Weight (lbs)" required />
       <select name="lanes" required>
@@ -293,6 +295,7 @@
           form.reset();
           document.getElementById('thankYou').classList.add('active');
           document.getElementById('zip-location').textContent = '';
+          document.getElementById('zip-location-hidden').value = '';
         } else {
           alert("Something went wrong. Please try again.");
         }
@@ -303,6 +306,7 @@
     document.getElementById('zip').addEventListener('input', function () {
       const zip = this.value.trim();
       const display = document.getElementById('zip-location');
+      const hiddenInput = document.getElementById('zip-location-hidden');
 
       if (zip.length === 5 && /^\d+$/.test(zip)) {
         fetch(`https://api.zippopotam.us/us/${zip}`)
@@ -312,13 +316,17 @@
           })
           .then(data => {
             const place = data.places[0];
-            display.textContent = `📍 ${place['place name']}, ${place['state abbreviation']}`;
+            const location = `${place['place name']}, ${place['state abbreviation']}`;
+            display.textContent = `📍 ${location}`;
+            hiddenInput.value = location;
           })
           .catch(() => {
             display.textContent = '⚠️ ZIP not found';
+            hiddenInput.value = '';
           });
       } else {
         display.textContent = '';
+        hiddenInput.value = '';
       }
     });
   </script>
