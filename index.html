@@ -294,81 +294,41 @@
     </div>
   </section>
 
- <!-- ONLY THE UPDATED CONTACT SECTION -->
-<section class="contact scroll-fade" id="contact">
-  <h2>Get Started</h2>
-  <form action="/submit-form" method="POST" enctype="multipart/form-data" id="dispatchForm">
-    <div class="form-row">
-      <input type="text" name="name" placeholder="Full Name" required />
-      <input type="tel" name="phone" placeholder="Phone Number" required />
-    </div>
-    <div class="form-row">
-      <input type="email" name="email" placeholder="Your Email" required />
-      <input type="text" name="mc" placeholder="MC Number" required />
-    </div>
-    <div class="form-row">
-      <select name="truckType" required>
-        <option value="">Select Truck Type</option>
-        <option value="Dry Van">Dry Van</option>
-        <option value="Reefer">Reefer</option>
-        <option value="Flatbed">Flatbed</option>
-        <option value="Power Only">Power Only</option>
-        <option value="Box Truck">Box Truck</option>
-        <option value="Hot Shot">Hot Shot</option>
-      </select>
-      <input type="text" name="zip" id="zip" placeholder="ZIP Code" required />
-    </div>
-    <div id="zip-location"></div>
-    <div class="form-row">
-      <input type="text" name="length" placeholder="Truck Length (ft)" required />
-      <input type="text" name="Weight" placeholder="Weight (lbs)" required />
-    </div>
-    <div class="form-row">
-      <select name="lanes" required>
-        <option value="">Preferred Lanes</option>
-        <option value="OTR">OTR (Over-the-Road)</option>
-        <option value="Regional">Regional</option>
-        <option value="Local">Local</option>
-      </select>
-    </div>
-
-    <textarea name="message" rows="4" placeholder="Notes or specific lanes?"></textarea>
-
-    <!-- Uploads -->
-    <div style="background:#0b0c10; border:1px solid #66fcf1; padding:20px; border-radius:10px;">
-      <h3 style="color:#66fcf1;">📎 Upload Your Documents</h3>
+  <section class="contact scroll-fade" id="contact">
+    <h2>Get Started</h2>
+    <form action="https://formspree.io/f/xanjolal" method="POST" id="dispatchForm">
+      <div class="form-row"><input type="text" name="name" placeholder="Full Name" required /><input type="tel" name="phone" placeholder="Phone Number" required /></div>
+      <div class="form-row"><input type="email" name="email" placeholder="Your Email" required /><input type="text" name="mc" placeholder="MC Number" required /></div>
       <div class="form-row">
-        <label>W-9 Form <input type="file" name="w9" accept=".pdf,.jpg,.png" required></label>
-        <label>Certificate of Insurance <input type="file" name="coi" accept=".pdf,.jpg,.png" required></label>
+        <select name="truckType" required>
+          <option value="">Select Truck Type</option>
+          <option value="Dry Van">Dry Van</option>
+          <option value="Reefer">Reefer</option>
+          <option value="Flatbed">Flatbed</option>
+          <option value="Power Only">Power Only</option>
+          <option value="Box Truck">Box Truck</option>
+          <option value="Hot Shot">Hot Shot</option>
+        </select>
+        <input type="text" name="zip" id="zip" placeholder="ZIP Code" required />
       </div>
+      <div id="zip-location"></div>
+      <div class="form-row"><input type="text" name="length" placeholder="Truck Length (ft)" required /><input type="text" name="Weight" placeholder="Weight (lbs)" required /></div>
       <div class="form-row">
-        <label>MC Authority <input type="file" name="mcAuth" accept=".pdf,.jpg,.png" required></label>
-        <label>Factoring NOA / Void Check <input type="file" name="noa" accept=".pdf,.jpg,.png" required></label>
+        <select name="lanes" required>
+          <option value="">Preferred Lanes</option>
+          <option value="OTR">OTR (Over-the-Road)</option>
+          <option value="Regional">Regional</option>
+          <option value="Local">Local</option>
+        </select>
       </div>
+      <textarea name="message" rows="4" placeholder="Notes or specific lanes?"></textarea>
+      <button type="submit">Submit to connect with dispatch</button>
+    </form>
+    <div class="thank-you" id="thankYou">
+      <div class="clock">⏰</div>
+      <h3>Thanks! We'll reach out with load options within 5 minutes.</h3>
     </div>
-
-    <!-- Social logos inside the form area -->
-    <div class="form-row" style="justify-content: center; gap: 15px; margin-top: 20px;">
-      <a href="https://www.instagram.com/quickhaulxpress" target="_blank" title="Instagram">
-        <i class="fab fa-instagram" style="color:#66fcf1; font-size: 24px;"></i>
-      </a>
-      <a href="mailto:lucas.otrdispatch@gmail.com" title="Email">
-        <i class="fas fa-envelope" style="color:#66fcf1; font-size: 24px;"></i>
-      </a>
-      <a href="https://wa.me/16147146637" target="_blank" title="WhatsApp">
-        <i class="fab fa-whatsapp" style="color:#66fcf1; font-size: 24px;"></i>
-      </a>
-    </div>
-
-    <button type="submit">Submit to connect with dispatch</button>
-  </form>
-
-  <div class="thank-you" id="thankYou">
-    <div class="clock">⏰</div>
-    <h3>Thanks! We'll reach out with load options within 5 minutes.</h3>
-  </div>
-</section>
-
+  </section>
 
   <footer>&copy; 2025 QuickHaulXpress Dispatch. All rights reserved.</footer>
 
